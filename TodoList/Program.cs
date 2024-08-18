@@ -1,4 +1,5 @@
 using TodoList.Data;
+using TodoList.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,5 +30,19 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
+app.MapGet("/todoitems", async (TodoContext db) =>
+    await db.TodoItems.ToListAsync());
+
+
+app.MapPost("/todoitems", async (TodoContext db, TodoItem todo) =>
+    {
+        db.TodoItems.Add(todo);
+        await db.SaveChangesAsync();
+        return Results.Created($"/todoitems/{todo.Id}", todo);
+    });
+
+
 
 app.Run();
