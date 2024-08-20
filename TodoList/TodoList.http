@@ -1,8 +1,5 @@
 ﻿@TodoList_HostAddress = https://localhost:7129
 
-GET {{TodoList_HostAddress}}/todoitems
-
-###
 
 POST {{TodoList_HostAddress}}/todoitems
 Content-Type: application/json
@@ -11,4 +8,25 @@ Content-Type: application/json
   "name":"walk dog",
   "isComplete":true
 }
+###
+
+GET {{TodoList_HostAddress}}/todoitems
+
+###
+
+GET {{TodoList_HostAddress}}/todoitems/3
+
+###
+
+PUT {{TodoList_HostAddress}}/todoitems/3
+Content-Type: application/json
+
+{
+  "name": "feed fish",
+  "isComplete" : false
+}
+###
+
+DELETE {{TodoList_HostAddress}}/todoitems/3
+
 ###
