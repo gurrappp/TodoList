@@ -1,4 +1,4 @@
-﻿@TodoList_HostAddress = https://localhost:7129
+﻿@TodoList_HostAddress = https://localhost:44396
 
 
 POST {{TodoList_HostAddress}}/todoitems
@@ -6,7 +6,7 @@ Content-Type: application/json
 
 {
   "name":"walk dog",
-  "isComplete":true
+  "isComplete":false
 }
 ###
 
