@@ -24,6 +24,20 @@
         </form>
     </div>
 
+    <div id="confirmDeleteForm">
+        <h3>Delete</h3>
+        <h4>Are you sure you want to delete this to-do item?</h4>
+        <form action="javascript:void(0);" onsubmit="deleteItem()">
+            <input type="hidden" id="delete-id">
+            <label for="delete-id" id="delete-name-label"></label>
+            <br />
+            <br />
+            <input type="submit" value="Yes">
+            <button type="button" onclick="closeInput()">No</button>
+            <!--<a onclick="closeInput()" aria-label="Close" value="No"></a>-->
+        </form>
+    </div>
+
     <p id="counter"></p>
 
     <table>

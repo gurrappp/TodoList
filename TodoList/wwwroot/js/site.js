@@ -28,7 +28,8 @@ function _displayItems(data) {
 
         let deleteButton = button.cloneNode(false);
         deleteButton.innerText = 'Delete';
-        deleteButton.setAttribute('onclick', `deleteItem(${item.id})`);
+        //deleteButton.setAttribute('onclick', `deleteItem(${item.id})`);
+        deleteButton.setAttribute('onclick', `displayDeleteForm(${item.id})`);
 
         let tr = tBody.insertRow();
 
@@ -83,12 +84,24 @@ function addItem() {
 
 function displayEditForm(id) {
 
+    closeInput();
     const item = todos.find(item => item.id === id);
 
     document.getElementById('edit-name').value = item.name;
     document.getElementById('edit-id').value = item.id;
     document.getElementById('edit-isComplete').checked = item.isComplete;
     document.getElementById('editForm').style.display = 'block';
+}
+
+function displayDeleteForm(id) {
+
+    closeInput();
+    const item = todos.find(item => item.id === id);
+
+    document.getElementById('delete-name-label').innerHTML = item.name;
+    document.getElementById('delete-id').value = item.id;
+    document.getElementById('confirmDeleteForm').style.display = 'block';
+
 }
 
 function updateItem() {
@@ -118,12 +131,19 @@ function updateItem() {
 
 function closeInput() {
     document.getElementById('editForm').style.display = 'none';
+    document.getElementById('confirmDeleteForm').style.display = 'none';
 }
 
-function deleteItem(id) {
-    fetch(`${uri}/${id}`, {
+function deleteItem() {
+
+    const itemId = document.getElementById('delete-id').value;
+    fetch(`${uri}/${itemId}`, {
         method: 'DELETE'
     })
         .then(() => getItems())
         .catch(error => console.error('Unable to delete item', error));
+
+    closeInput();
+
+    return false;
 }

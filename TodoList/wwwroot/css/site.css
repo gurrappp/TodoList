@@ -33,6 +33,9 @@ input[type='submit'], button, [aria-label] {
 #editForm {
     display: none;
 }
+#confirmDeleteForm {
+    display: none;
+}
 
 table {
     font-family: Arial, sans-serif;
