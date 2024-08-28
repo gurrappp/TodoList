@@ -122,6 +122,11 @@ function updateItem() {
         body: JSON.stringify(item)
     })
         .then(() => getItems())
+        .then(result => {
+            if (result.status === 200) {
+                displaySuccess();
+            }
+        })
         .catch(error => console.error('Unable to update item', error));
 
     closeInput();
@@ -129,9 +134,14 @@ function updateItem() {
     return false;
 }
 
+function displaySuccess() {
+    console.log("here");
+}
+
 function closeInput() {
     document.getElementById('editForm').style.display = 'none';
     document.getElementById('confirmDeleteForm').style.display = 'none';
+    document.getElementById('editSuccessForm').style.display = 'none';
 }
 
 function deleteItem() {

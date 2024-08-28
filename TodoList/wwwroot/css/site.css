@@ -37,6 +37,10 @@ input[type='submit'], button, [aria-label] {
     display: none;
 }
 
+#editSuccessForm {
+    display: none;
+}
+
 table {
     font-family: Arial, sans-serif;
     border: 1px solid;
