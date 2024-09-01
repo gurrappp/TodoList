@@ -121,12 +121,13 @@ function updateItem() {
         },
         body: JSON.stringify(item)
     })
-        .then(() => getItems())
+        
         .then(result => {
-            if (result.status === 200) {
+            if (result.status === 204) {
                 displaySuccess();
             }
         })
+        .then(() => getItems())
         .catch(error => console.error('Unable to update item', error));
 
     closeInput();
@@ -135,7 +136,7 @@ function updateItem() {
 }
 
 function displaySuccess() {
-    console.log("here");
+    document.getElementById('editSuccessForm').style.display = 'block';
 }
 
 function closeInput() {
